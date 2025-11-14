@@ -10,14 +10,49 @@
 
 
 const emailAPI = `https://flynn.boolean.careers/exercises/api/random/mail`;
+const listElem = document.querySelector("#list");
+const btnElem = document.querySelector("#btn");
+
+let btnONOFF = false;
+let counter = 0;
+let htmlString = "";
 
 
 
+btnElem.addEventListener("click", function () {
+    if (btnONOFF === false) {
+        for (let i = 0; i < 10; i++) {
+            axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then(function (resp) {
+                let risposta = resp.data.response;
+                counter++;
+                htmlString += `<li>${risposta}</li>`;
 
-for(let i = 0; i < 10; i++){
-    axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then(function(resp){
-    let risposta = resp.data.response;
-    console.log(risposta);
-        
+                if (counter === 10) {
+                    listElem.innerHTML = htmlString;
+                    btnONOFF = true;
+                }
+            })
+        }
+
+
+    } else {
+        counter = 0;
+        htmlString = "";
+        for (let i = 0; i < 10; i++) {
+            axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then(function (resp) {
+                let answer = resp.data.response;
+                counter++;
+                htmlString += `<li>${answer}</li>`;
+
+                if (counter === 10) {
+                    listElem.innerHTML = htmlString;
+                    btnONOFF = false;
+                }
+            })
+        }
+    }
+
+
 })
-}
+
+
