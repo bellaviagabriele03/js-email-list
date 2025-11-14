@@ -21,11 +21,13 @@ let htmlString = "";
 
 btnElem.addEventListener("click", function () {
     if (btnONOFF === false) {
+        counter = 0;
+        htmlString = "";
         for (let i = 0; i < 10; i++) {
             axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then(function (resp) {
                 let risposta = resp.data.response;
                 counter++;
-                htmlString += `<li>${risposta}</li>`;
+                htmlString += `<li class = "text-white">Email n°${counter}:  <a href="">${risposta}</a></li>`;
 
                 if (counter === 10) {
                     listElem.innerHTML = htmlString;
@@ -40,9 +42,9 @@ btnElem.addEventListener("click", function () {
         htmlString = "";
         for (let i = 0; i < 10; i++) {
             axios.get(`https://flynn.boolean.careers/exercises/api/random/mail`).then(function (resp) {
-                let answer = resp.data.response;
+                let risposta = resp.data.response;
                 counter++;
-                htmlString += `<li>${answer}</li>`;
+                htmlString += `<li class = "text-white">Email n°${counter}:  <a href="">${risposta}</a></li>`;
 
                 if (counter === 10) {
                     listElem.innerHTML = htmlString;

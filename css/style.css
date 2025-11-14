@@ -81,3 +81,14 @@ a {
 .bg-violet {
     background-color: darkslateblue;
 }
+
+
+/* botton  */
+.btn {
+    padding: 10px;
+    background-color: aqua;
+}
+
+.text-white {
+    color: white;
+}
